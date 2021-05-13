@@ -32,7 +32,9 @@
       <div class="d-flex  pa-4" @click="dialog = false">
         <router-link to="./ForgottenPassword" class="d-flex ma-auto">Forgotten password?</router-link>
       </div>
-      
+       <router-link to="./NewAccount"><v-btn color="green" class="d-flex ma-auto pa-4" @click="dialog = false">
+          Creat New account
+      </v-btn></router-link>
     </v-card>
   </v-dialog>
 </template>
