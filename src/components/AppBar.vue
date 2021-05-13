@@ -13,16 +13,18 @@
             <spam> Welcome to InfoTransport </spam>
         </div>
         <v-spacer></v-spacer>
-        
+        <login-button></login-button>
     </v-app-bar>
 </template>
 
 <script>
-
+import LoginButton from "./LoginButton.vue";
 
 export default{
    name: "AppBar",
-
+components: {
+    LoginButton
+}
 };
 </script>
 
