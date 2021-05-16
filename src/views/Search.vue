@@ -97,23 +97,23 @@
                         <tbody>
                         <tr>
                           <td>price</td>
-                          <td>{{information.price}}</td>
+                          <td>{{ information.price }}</td>
                         </tr>
                         <tr>
                           <td>currency</td>
-                          <td>{{information.currency}}</td>
+                          <td>{{ information.currency }}</td>
                         </tr>
                         <tr>
                           <td>the starting station</td>
-                          <td>{{information.the_starting_station}}</td>
+                          <td>{{ information.the_starting_station }}</td>
                         </tr>
                         <tr>
                           <td>the arrival station</td>
-                          <td>{{information.the_arrival_station}}</td>
+                          <td>{{ information.the_arrival_station }}</td>
                         </tr>
                         <tr>
                           <td>duration in hours</td>
-                          <td>{{information.duration_in_hours}}</td>
+                          <td>{{ information.duration_in_hours }}</td>
                         </tr>
                         </tbody>
                       </table>
@@ -121,26 +121,131 @@
                   </v-expansion-panel>
                 </v-expansion-panels>
               </div>
-              
-        
             </v-tab-item>
+
+            <v-tab-item>
+              <v-carousel :show-arrows="false">
+                <v-carousel-item
+                    v-for="(item,i) in items"
+                    :key="i"
+                    :src="item.src"
+                ></v-carousel-item>
+              </v-carousel>
+            </v-tab-item>
+
           </v-tabs>
         </v-card>
       </v-tab-item>
+
+      <v-tab-item>
+        <v-row justify="center">
+          <v-col
+              cols="12"
+              sm="8"
+          >
+            <v-card>
+              <v-card-title class="light-blue darken-4">
+                <span class="headline white--text">Casa Bus</span>
+
+                <v-spacer></v-spacer>
+
+                <v-btn
+                    dark
+                    icon
+                >
+                  <v-icon>mdi-chevron-left</v-icon>
+                </v-btn>
+
+                <v-btn
+                    dark
+                    icon
+                >
+                  <v-icon>mdi-pencil</v-icon>
+                </v-btn>
+
+                <v-btn
+                    dark
+                    icon
+                >
+                  <v-icon>mdi-dots-vertical</v-icon>
+                </v-btn>
+              </v-card-title>
+
+              <v-list>
+                <v-list-item>
+                  <v-list-item-action>
+                    <v-icon>mdi-phone</v-icon>
+                  </v-list-item-action>
+
+                  <v-list-item-content>
+                    <v-list-item-title>+212 520 55 20 55</v-list-item-title>
+                  </v-list-item-content>
+                  <v-list-item-action>
+                    <v-icon>mdi-message-text</v-icon>
+                  </v-list-item-action>
+                </v-list-item>
+
+                <v-divider inset></v-divider>
+
+                <v-list-item>
+                  <v-list-item-action>
+                    <v-icon>mdi-email</v-icon>
+                  </v-list-item-action>
+
+                  <v-list-item-content>
+                    <v-list-item-title>client.alsaalbaida@alsa.ma</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+
+                <v-divider inset></v-divider>
+
+                <v-list-item>
+                  <v-list-item-action>
+                    <v-icon>mdi-map-marker</v-icon>
+                  </v-list-item-action>
+
+                  <v-list-item-content>
+                    <v-list-item-title>Alsa Al Baida
+                      203, Boulevard Bir Anzarane-Casablanca
+                    </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+
+              <v-img
+                  src="/images/casa-bus-flota-1.jpeg"
+                  height="200px"
+              ></v-img>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-tab-item>
+
     </v-tabs-items>
   </v-card>
 </template>
 
 <script>
 export default {
-  name: `Search`,
+  name: "Search",
   data() {
     return {
       tabs: null,
       text:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+       items: [
+        {
+          src: "/images/casa-bus-flota-1.jpeg",
+        },
+        {
+          src: "/images/casa-bus-flota-2.jpg",
+        },
+        {
+          src: "/images/casa-bus-flota-3.jpg",
+        },
+      ],
       panel: [],
-      items: 5,
+      items: 3,
     }
   },
   methods: {
@@ -149,6 +254,22 @@ export default {
     // Reset the panel
     none() {
       this.panel = []
+    },
+  },
+   computed: {
+    color() {
+      switch (this.value) {
+        case 0:
+          return "blue-grey"
+        case 1:
+          return "teal"
+        case 2:
+          return "brown"
+        case 3:
+          return "indigo"
+        default:
+          return "blue-grey"
+      }
     },
   },
 };
@@ -170,7 +291,7 @@ table.steelBlueCols td, table.steelBlueCols th {
 table.steelBlueCols tbody td {
   font-size: 12px;
   font-weight: bold;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 table.steelBlueCols td:nth-child(even) {
   background: #398AA4;
@@ -183,7 +304,7 @@ table.steelBlueCols tfoot .links {
 }
 table.steelBlueCols tfoot .links a{
   display: inline-block;
-  background: #FFFFFF;
+  background: #ffffff;
   color: #398AA4;
   padding: 2px 8px;
   border-radius: 5px;
